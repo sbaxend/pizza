@@ -10,10 +10,22 @@ import logger from 'redux-logger'
 
 //REDUCERS
 
+const totalCost = (state = 0, action) => {
+    // this will be total reducer
+    
+    return state
+};
+
+const customerInfo = (state = {}, action) => {
+    // this holds the customers info 
+
+    return state
+};
+
 const storeInstance = createStore(
     combineReducers(
         {
-            // reducers go here
+            // reducer goes here
         }
     ),
     applyMiddleware(logger)
