@@ -17,9 +17,11 @@ const totalCost = (state = 0, action) => {
 };
 
 const customerInfo = (state = {}, action) => {
-    // this holds the customers info 
+    if (action.type === 'ADD_CUSTOMER_INFO') {
+        return action.payload;
+    } // Add clear form else if here
 
-    return state
+    return state;
 };
 
 const customersPizza = (state ={}, action) => {
@@ -31,6 +33,9 @@ const storeInstance = createStore(
     combineReducers(
         {
             // reducer goes here
+            totalCost,
+            customerInfo,
+            customersPizza
         }
     ),
     applyMiddleware(logger)
