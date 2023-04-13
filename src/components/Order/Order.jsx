@@ -3,7 +3,7 @@ import axios from "axios"
 
 function Order() {
 
-    function fetchPizza = () => {
+   const fetchPizza = () => {
        axios.get('/api/pizza').then((response) => {
         
        })
