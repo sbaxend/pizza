@@ -2,7 +2,11 @@ import React from 'react';
 import axios from 'axios';
 import './App.css';
 import { HashRouter as Router, Route } from 'react-router-dom';
-
+import Order from '../Order/Order';
+import Customer from '../Customer/Customer';
+import Checkout from '../Checkout/Checkout';
+import Admin from '../Admin/Admin.jsx'
+import Header from '../Header/Header.jsx'
 function App() {
 
   return (
@@ -13,7 +17,24 @@ function App() {
   
       <img src='images/pizza_photo.png' />
       <p>Pizza is great.</p>
-  
+      <Router>
+        <Route exact path="/">
+          <Order />
+        </Route>
+
+        <Route exact path="/customer-info">
+          <Customer />
+        </Route>
+        
+        <Route exact path='/Checkout'>
+          <Checkout />
+        </Route>
+
+        <Route exact path='/admin'>
+          <Admin />
+        </Route>
+
+      </Router>
     </div>
   );
 }
