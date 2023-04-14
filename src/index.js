@@ -12,8 +12,7 @@ import logger from 'redux-logger'
 
 const totalCost = (state = 0, action) => {
     // this will be total reducer
-    
-    return state
+    return state;
 };
 
 const customerInfo = (state = {}, action) => {
