@@ -3,19 +3,38 @@ import { useHistory } from 'react-router-dom';
 
 
 function Customer() {
+    const dispatch = useDispatch();
+
+    const {name, address, city, zip } = useSelector(store => store.customerInfo);
+
+    const handleNameChange = (event) => {
+        //
+    }
+
+    const handleStreetChange = (event) => {
+        //
+    }
+
+    const handleCityChange = (event) => {
+        //
+    }
+
+    const handleZipChange = (event) => {
+        //
+    }
 
     return (
         <>
             <h1>Step 2: Enter Delivery Address and Choose Delivery Type</h1>
             <form>
                 <label htmlFor="name">Name:</label><br />
-                <input id="name" type="text" placeholder="John Dingle" /><br />
+                <input id="name" type="text" onChange={handleNameChange} placeholder={name} /><br />
                 <label htmlFor="street">Street Address:</label><br />
-                <input id="street" type="text" placeholder="666 No Way"/><br />
+                <input id="street" type="text" onChange={handleStreetChange} placeholder={address}/><br />
                 <label htmlFor="city">City:</label><br />
-                <input id="city" type="text" placeholder="Rock City" /><br />
+                <input id="city" type="text" onChange={handleCityChange} placeholder={city} /><br />
                 <label htmlFor="zip">Zip Code:</label><br />
-                <input id="zip" type="text" placeholder="12345" /><br />
+                <input id="zip" type="text" onChange={handleZipChange} placeholder={zip} /><br />
                 <input type="radio" id="delivery" name="delivery_type" value="Delivery" />
                 <label htmlFor="delivery">Delivery</label><br />
                 <input type="radio" id="pickup" name="delivery_type" value="Pickup" />
