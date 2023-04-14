@@ -16,13 +16,8 @@ const totalCost = (state = 0, action) => {
     return state
 };
 
-const customerInfo = (state = { 
-    name: 'John Dingle',
-    address: '666 No Way',
-    city: 'Rack City',
-    zip: '12345',
-}, action) => {
-    if (action.type === 'SET_CUSTOMER_NAME') {
+const customerInfo = (state = {}, action) => {
+    if (action.type === 'SET_CUSTOMER_INFO') {
         return action.payload;
     } // else if CLEAR FORM
 
