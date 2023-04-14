@@ -22,9 +22,9 @@ const customerInfo = (state = {
     city: 'Rack City',
     zip: '12345',
 }, action) => {
-    if (action.type === 'ADD_CUSTOMER_INFO') {
+    if (action.type === 'SET_CUSTOMER_NAME') {
         return action.payload;
-    } // Add clear form else if here
+    } // else if CLEAR FORM
 
     return state;
 };
