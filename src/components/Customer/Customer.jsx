@@ -53,7 +53,7 @@ function Customer() {
                 <input id="zip" type="text" onChange={handleZipChange} placeholder={custInfoState.zip} /><br />
                 <input type="radio" onChange={handleDeliveryChange} id="delivery" name="delivery_type" value="Delivery" />
                 <label htmlFor="delivery">Delivery</label><br />
-                <input type="radio"onChange={handleDeliveryChange} id="pickup" name="delivery_type" value="Pickup" />
+                <input type="radio" onChange={handleDeliveryChange} id="pickup" name="delivery_type" value="Pickup" />
                 <label htmlFor="pickup">Pickup</label><br />
                 <input type="submit" value="Next" /> 
             </form>
