@@ -2,7 +2,7 @@
   "name": "redux-pizza-parlor",
   "version": "0.2.0",
   "private": true,
-  "proxy": "http://localhost:5000",
+  "proxy": "http://localhost:5005",
   "dependencies": {
     "axios": "^0.21.1",
     "pg": "^8.2.1",

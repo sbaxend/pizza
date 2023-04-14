@@ -12,17 +12,15 @@ import logger from 'redux-logger'
 
 const totalCost = (state = 0, action) => {
     // this will be total reducer
-    
-    return state
+    return state;
 };
 
 const customerInfo = (state = {}, action) => {
-    // this holds the customers info 
-
+    // this holds the customers info \
     return state
 };
 
-const customersPizza = (state ={}, action) => {
+const customersPizza = (state = [], action) => {
     
     return state
 };
@@ -31,6 +29,9 @@ const storeInstance = createStore(
     combineReducers(
         {
             // reducer goes here
+            totalCost,
+            customerInfo,
+            customersPizza
         }
     ),
     applyMiddleware(logger)
