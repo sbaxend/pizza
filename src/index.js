@@ -22,8 +22,10 @@ const customerInfo = (state = {}, action) => {
     return state
 };
 
-const customersPizza = (state ={}, action) => {
-    
+const customersPizza = (state = [], action) => {
+    if(action.type === 'ADD_CUSTOMER_PIZZA') {
+        return [...state, action.payload];
+    } 
     return state
 };
 
@@ -31,6 +33,9 @@ const storeInstance = createStore(
     combineReducers(
         {
             // reducer goes here
+            totalCost,
+            customerInfo,
+            customersPizza
         }
     ),
     applyMiddleware(logger)
