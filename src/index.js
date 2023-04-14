@@ -16,12 +16,17 @@ const totalCost = (state = 0, action) => {
 };
 
 const customerInfo = (state = {}, action) => {
-    // this holds the customers info \
-    return state
+    if (action.type === 'SET_CUSTOMER_INFO') {
+        return action.payload;
+    } // else if CLEAR FORM
+
+    return state;
 };
 
 const customersPizza = (state = [], action) => {
-    
+    if(action.type === 'ADD_CUSTOMER_PIZZA') {
+        return [...state, action.payload];
+    } 
     return state
 };
 
