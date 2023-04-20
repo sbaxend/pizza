@@ -47,7 +47,10 @@ function Checkout() {
             <ul style={{listStyle: 'none'}}>
             {
                 pizzas.map((pizza) => (
-                    <li key={pizza.id}>{pizza.quantity}</li>
+                    <li>
+                        Name: {pizza.name}
+                        Quantity: {pizza.quantity}
+                    </li>
                 ))
             }
             </ul>
