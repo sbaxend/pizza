@@ -6,6 +6,7 @@ import { useState } from 'react';
 function Customer() {
     const dispatch = useDispatch();
     const history = useHistory();
+    const totalCost = useSelector(store => store.totalCost);
     
     let [custInfoState, setCustInfoState] = useState({});
     //Storing customer name in state
@@ -53,6 +54,9 @@ function Customer() {
 
     return (
         <>
+            <h2
+                style={{display: "flex", justifyContent: "right"}}
+            >Total Cost:{totalCost}</h2>
             <h1>Step 2: Enter Delivery Address and Choose Delivery Type</h1>
             <form onSubmit={submitForm}>
                 <label htmlFor="name">Name:</label><br />
