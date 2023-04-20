@@ -12,14 +12,15 @@ import logger from 'redux-logger'
 
 const totalCost = (state = 0, action) => {
     // this will be total reducer
-    
-    return state
+    return state;
 };
 
 const customerInfo = (state = {}, action) => {
-    // this holds the customers info 
+    if (action.type === 'SET_CUSTOMER_INFO') {
+        return action.payload;
+    } // else if CLEAR FORM
 
-    return state
+    return state;
 };
 
 const customersPizza = (state = [], action) => {
