@@ -18,7 +18,9 @@ const totalCost = (state = 0, action) => {
 const customerInfo = (state = {}, action) => {
     if (action.type === 'SET_CUSTOMER_INFO') {
         return action.payload;
-    } // else if CLEAR FORM
+    } else if (action.type === 'CLEAR_FORM') {
+        return state;
+    }
 
     return state;
 };

@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 function Customer() {
     const dispatch = useDispatch();
+    const history = useHistory();
     
     let [custInfoState, setCustInfoState] = useState({});
     //Storing customer name in state
@@ -41,6 +42,13 @@ function Customer() {
             }
         }
         dispatch(action);
+
+        //Validation and pushing history to /Checkout
+        if (Object.keys(custInfoState).length === 5) {
+            history.push('/Checkout');
+        } else {
+            alert('Please fill out the entire form');
+        }
     }
 
     return (
@@ -55,6 +63,7 @@ function Customer() {
                 <input id="city" type="text" onChange={handleCityChange} placeholder="Rack City" /><br />
                 <label htmlFor="zip">Zip Code:</label><br />
                 <input id="zip" type="text" onChange={handleZipChange} placeholder="12345" /><br />
+                {/* radio buttons */}
                 <input type="radio" onChange={handleDeliveryChange} id="delivery" name="delivery_type" value="Delivery" />
                 <label htmlFor="delivery">Delivery</label><br />
                 <input type="radio" onChange={handleDeliveryChange} id="pickup" name="delivery_type" value="Pickup" />
