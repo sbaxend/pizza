@@ -1,6 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import './Checkout.css';
+import { Container, TableBody, TableCell } from "@mui/material";
+import Table from "@mui/material";
+import TableBody from "@mui/material";
+import TableCell from "@mui/material";
 
 function Checkout() {
     const dispatch = useDispatch();
@@ -34,8 +39,12 @@ function Checkout() {
     }
 
     return (
-        <div id="checkout">
+        <Container sx={{padding: '0 90px', textAlign: 'left'}} id="checkout">
             <h2>Step 3: Checkout</h2>
+            <hr />
+            <h4>{customer_name}</h4>
+            <p>{street_address}</p>
+            <p>{city}, {zip}</p>
             <ul style={{listStyle: 'none'}}>
                 <li>{customer_name}</li>
                 <li>{street_address}</li>
@@ -47,7 +56,7 @@ function Checkout() {
             <ul style={{listStyle: 'none'}}>
             {
                 pizzas.map((pizza) => (
-                    <li>
+                    <li key={pizza.id}>
                         Name: {pizza.name}
                         Quantity: {pizza.quantity}
                     </li>
@@ -55,7 +64,7 @@ function Checkout() {
             }
             </ul>
             <button onClick={submitOrder}>Submit</button>
-        </div>
+        </Container>
     )
 }
 
