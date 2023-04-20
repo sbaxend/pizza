@@ -8,6 +8,7 @@ function Order() {
   const history = useHistory();
   const dispatch = useDispatch();
   const customersPizza = useSelector(store => store.customersPizza);
+  const totalCost = useSelector(store => store.totalCost)
 
   useEffect(() => {
     fetchPizza();
@@ -34,6 +35,8 @@ function Order() {
       console.log(selectedPizza)
     const action = {type: 'ADD_CUSTOMER_PIZZA', payload: selectedPizza}
     dispatch(action);
+    const pizzaPrice = {type: 'ADD_TOTAL_COST', payload: Number(pizza.price)}
+    dispatch(pizzaPrice)
   };
   
 
@@ -47,6 +50,7 @@ function Order() {
 }
   return (
     <div>
+       <h3>Total Cost: {totalCost}</h3> 
       <ul>
         {pizzas.map((pizza) => (
           <li key={pizza.id}>

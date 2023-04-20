@@ -11,7 +11,9 @@ import logger from 'redux-logger'
 //REDUCERS
 
 const totalCost = (state = 0, action) => {
-    // this will be total reducer
+    if (action.type === 'ADD_TOTAL_COST') {
+        return state + action.payload;
+      }
     return state;
 };
 
