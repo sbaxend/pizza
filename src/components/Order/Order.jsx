@@ -30,7 +30,8 @@ function Order() {
     const selectedPizza = {
         id: pizza.id,
         name: pizza.name,
-        price: pizza.price
+        price: pizza.price,
+        quantity: 1
       };
       console.log(selectedPizza)
     const action = {type: 'ADD_CUSTOMER_PIZZA', payload: selectedPizza}
