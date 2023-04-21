@@ -19,7 +19,7 @@ function Header() {
           borderRadius: "10px",
         }}
       >
-        {customersPizza.length === 1
+        {customersPizza.length >= 1
           ? `Your Total: $${totalCost}`
           : "Waiting For Selection"}
       </Typography>
