@@ -5,7 +5,7 @@ import { useTheme } from "@mui/material/styles";
 function Header() {
   const totalCost = useSelector((store) => store.totalCost);
   const customersPizza = useSelector((store) => store.customersPizza);
-
+let total = Math.round(totalCost * 100) / 100
   return (
     <>
       <Typography
@@ -20,7 +20,7 @@ function Header() {
         }}
       >
         {customersPizza.length >= 1
-          ? `Your Total: $${totalCost}`
+          ? `Your Total: $${total}`
           : "Waiting For Selection"}
       </Typography>
     </>
