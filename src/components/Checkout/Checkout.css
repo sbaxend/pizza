@@ -2,3 +2,14 @@ h2 {
     text-align: left;
 }
 
+h4 {
+    margin: 10px 0;
+}
+
+p {
+    margin: 0;
+}
+
+h5 {
+    margin-bottom: 10px;
+}
