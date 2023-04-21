@@ -3,12 +3,18 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useSelector, useDispatch } from "react-redux";
+import OrderItem from "./OrderItem";
+import Header from "../Header/Header";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+
+
 function Order() {
   const [pizzas, setPizzas] = useState([]);
   const history = useHistory();
   const dispatch = useDispatch();
-  const customersPizza = useSelector(store => store.customersPizza);
-  const totalCost = useSelector(store => store.totalCost)
+  const customersPizza = useSelector((store) => store.customersPizza);
+  const totalCost = useSelector((store) => store.totalCost);
 
   useEffect(() => {
     fetchPizza();
@@ -28,43 +34,38 @@ function Order() {
   const selectPizzas = (event, pizza) => {
     event.preventDefault();
     const selectedPizza = {
-        id: pizza.id,
-        name: pizza.name,
-        price: pizza.price,
-        quantity: 1
-      };
-      console.log(selectedPizza)
-    const action = {type: 'ADD_CUSTOMER_PIZZA', payload: selectedPizza}
+      id: pizza.id,
+      name: pizza.name,
+      price: pizza.price,
+      quantity: 1,
+    };
+    console.log(selectedPizza);
+    const action = { type: "ADD_CUSTOMER_PIZZA", payload: selectedPizza };
     dispatch(action);
-    const pizzaPrice = {type: 'ADD_TOTAL_COST', payload: Number(pizza.price)}
-    dispatch(pizzaPrice)
+    const pizzaPrice = { type: "ADD_TOTAL_COST", payload: Number(pizza.price) };
+    dispatch(pizzaPrice);
   };
-  
-
 
   const nextPage = () => {
     if (customersPizza.length > 0) {
-        history.push('/customer-info');
+      history.push("/customer-info");
     } else {
-        alert('PLEASE SELECT PIZZA');
+      alert("PLEASE SELECT PIZZA");
     }
-}
+  };
   return (
     <div>
-       <h3>Total Cost: {totalCost}</h3> 
-      <ul>
+      <Header />
+      <Grid container spacing={2}>
         {pizzas.map((pizza) => (
-          <li key={pizza.id}>
-            <h2>{pizza.name}</h2>
-            <p>{pizza.description}</p>
-            <p>Price: {pizza.price}</p>
-            <img src={pizza.image_path} />
-            <br />
-            <button onClick={(event) => selectPizzas(event, pizza)}>Add</button>
-          </li>
+          <Grid key={pizza.id} item xs={12} sm={6} md={4}>
+            <OrderItem key={pizza.id} 
+            selectPizzas={selectPizzas}
+            pizza={pizza}/>
+          </Grid>
         ))}
-      </ul>
-      <button onClick={nextPage}>Next</button>
+      </Grid>
+      <Button onClick={nextPage}>Next</Button>
     </div>
   );
 }
