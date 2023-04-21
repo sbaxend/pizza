@@ -2,10 +2,21 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import './Checkout.css';
-import { Container, TableBody, TableCell } from "@mui/material";
-import Table from "@mui/material";
-import TableBody from "@mui/material";
-import TableCell from "@mui/material";
+import { Button, Container, TableFooter } from "@mui/material";
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import { useState } from "react";
+
 
 function Checkout() {
     const dispatch = useDispatch();
@@ -18,6 +29,15 @@ function Checkout() {
     const type = useSelector(store => store.customerInfo.deliveryType);
     const total = useSelector(store => store.totalCost);
     const pizzas = useSelector(store => store.customersPizza);
+    const [open, setOpen] = useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        history.push('/');
+    };
 
     const orderDetails = {
         customer_name,
@@ -34,36 +54,75 @@ function Checkout() {
             console.log(response);
             const action = { type: 'CLEAR_FORM' };
             dispatch(action);
-            history.push('/');
+            handleClickOpen();
+            // history.push('/');
+        }).catch((error) => {
+            console.log(`Error in GET ${error}`);
+            alert('Something went wrong');
         })
     }
 
+
     return (
-        <Container sx={{padding: '0 90px', textAlign: 'left'}} id="checkout">
+        <Container sx={{ padding: '0 90px', textAlign: 'left' }} id="checkout">
             <h2>Step 3: Checkout</h2>
             <hr />
             <h4>{customer_name}</h4>
+            <h5>Order type: {type}</h5>
             <p>{street_address}</p>
             <p>{city}, {zip}</p>
-            <ul style={{listStyle: 'none'}}>
-                <li>{customer_name}</li>
-                <li>{street_address}</li>
-                <li>{city}</li>
-                <li>{zip}</li>
-                <li>{type}</li>
-                <li>{total}</li>
-            </ul>
-            <ul style={{listStyle: 'none'}}>
-            {
-                pizzas.map((pizza) => (
-                    <li key={pizza.id}>
-                        Name: {pizza.name}
-                        Quantity: {pizza.quantity}
-                    </li>
-                ))
-            }
-            </ul>
-            <button onClick={submitOrder}>Submit</button>
+            <TableContainer component={Paper}>
+                <Table sx={{ marginTop: '20px' }}>
+                    <TableHead sx={{ backgroundColor: 'lightgray' }}>
+                        <TableRow>
+                            <TableCell>Name</TableCell>
+                            <TableCell>Cost</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {
+                            pizzas.map(pizza => (
+                                <TableRow key={pizza.id}>
+                                    <TableCell>{pizza.name}</TableCell>
+                                    <TableCell>{pizza.price}</TableCell>
+                                </TableRow>
+                            ))
+                        }
+                    </TableBody>
+                    <TableFooter>
+                        <TableRow>
+                            <TableCell sx={{ fontSize: '18px', fontWeight: 'bold' }}>
+                                Grand Total:
+                            </TableCell>
+                            <TableCell sx={{ fontSize: '18px', fontWeight: 'bold' }}>
+                                <strong>{Math.round(total * 100) / 100}</strong>
+                            </TableCell>
+                        </TableRow>
+                    </TableFooter>
+                </Table>
+            </TableContainer>
+            <Button variant="contained" onClick={submitOrder} sx={{ marginTop: '20px' }}>Submit</Button>
+            {/* <button onClick={submitOrder}>Submit</button> */}
+            <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">
+                    {"Your Order has been submitted"}
+                </DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        We are working on prepapring your order. Thank you for shopping with Prime Pizza!
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button color="success" onClick={handleClose} autoFocus>
+                        Return to Homepage
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </Container>
     )
 }
