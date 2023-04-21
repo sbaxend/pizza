@@ -1,17 +1,30 @@
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
+import Typography from "@mui/material/Typography";
+import { useTheme } from "@mui/material/styles";
 
 function Header() {
-    const totalCost = useSelector(store => store.totalCost);
-    const customersPizza = useSelector(store => store.customersPizza);
+  const totalCost = useSelector((store) => store.totalCost);
+  const customersPizza = useSelector((store) => store.customersPizza);
 
-    return (
-        <>
-            <h1>
-                {customersPizza.length === 1 ? 'This pizza is yours for the low price of:' :
-                                    'These pizzas are yours for the low price of:'} {totalCost}
-            </h1>
-        </>
-    )
+  return (
+    <>
+      <Typography
+        variant="h5"
+        sx={{
+          position: "fixed",
+          top: 20,
+          right: 20,
+          backgroundColor: "white",
+          padding: "10px",
+          borderRadius: "10px",
+        }}
+      >
+        {customersPizza.length === 1
+          ? `Your Total: $${totalCost}`
+          : "Waiting For Selection"}
+      </Typography>
+    </>
+  );
 }
 
-export default Header
+export default Header;
