@@ -8,7 +8,6 @@ import Header from "../Header/Header";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 
-
 function Order() {
   const [pizzas, setPizzas] = useState([]);
   const history = useHistory();
@@ -59,13 +58,21 @@ function Order() {
       <Grid container spacing={2}>
         {pizzas.map((pizza) => (
           <Grid key={pizza.id} item xs={12} sm={6} md={4}>
-            <OrderItem key={pizza.id} 
-            selectPizzas={selectPizzas}
-            pizza={pizza}/>
+            <OrderItem
+              key={pizza.id}
+              selectPizzas={selectPizzas}
+              pizza={pizza}
+            />
           </Grid>
         ))}
       </Grid>
-      <Button onClick={nextPage}>Next</Button>
+      <Button
+        style={{ position: "fixed", bottom: 20, right: 20 }}
+        variant="contained"
+        onClick={nextPage}
+      >
+        CONTINUE
+      </Button>
     </div>
   );
 }
