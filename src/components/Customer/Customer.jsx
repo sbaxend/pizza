@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
+import Header from '../Header/Header.jsx';
 
 
 function Customer() {
@@ -54,9 +55,10 @@ function Customer() {
 
     return (
         <>
-            <h2
+            <Header />
+            {/* <h2
                 style={{display: "flex", justifyContent: "right"}}
-            >Total Cost:{totalCost}</h2>
+            >Total Cost:{totalCost}</h2> */}
             <h1>Step 2: Enter Delivery Address and Choose Delivery Type</h1>
             <form onSubmit={submitForm}>
                 <label htmlFor="name">Name:</label><br />
