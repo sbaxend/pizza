@@ -2,10 +2,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import './Checkout.css';
-import { Container, TableBody, TableCell } from "@mui/material";
-import Table from "@mui/material";
-import TableBody from "@mui/material";
-import TableCell from "@mui/material";
+import { Container } from "@mui/material";
+
 
 function Checkout() {
     const dispatch = useDispatch();
