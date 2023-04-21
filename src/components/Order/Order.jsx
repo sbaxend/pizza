@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useSelector, useDispatch } from "react-redux";
 import OrderItem from "./OrderItem";
 import Header from "../Header/Header";
+import ProgressBar from "../ProgressBar/ProgressBar";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 
@@ -49,12 +50,15 @@ function Order() {
     if (customersPizza.length > 0) {
       history.push("/customer-info");
     } else {
-      alert("PLEASE SELECT PIZZA");
+      alert("PLEASE SELECT A PIZZA");
     }
   };
   return (
     <div>
       <Header />
+      <ProgressBar currentStep={0}/>
+      <br />
+      <hr />
       <Grid container spacing={2}>
         {pizzas.map((pizza) => (
           <Grid key={pizza.id} item xs={12} sm={6} md={4}>

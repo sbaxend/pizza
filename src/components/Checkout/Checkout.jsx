@@ -16,6 +16,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useState } from "react";
+import ProgressBar from "../ProgressBar/ProgressBar";
 
 
 function Checkout() {
@@ -66,6 +67,7 @@ function Checkout() {
     return (
         <Container sx={{ padding: '0 90px', textAlign: 'left' }} id="checkout">
             <h2>Step 3: Checkout</h2>
+            <ProgressBar currentStep={2}/>
             <hr />
             <h4>{customer_name}</h4>
             <h5>Order type: {type}</h5>
