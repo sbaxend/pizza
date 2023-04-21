@@ -114,7 +114,7 @@ function Checkout() {
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
-                        We are working on prepapring your order. Thank you for shopping with Prime Pizza!
+                        We are working on preparing your order. Thank you for shopping with Prime Pizza!
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
